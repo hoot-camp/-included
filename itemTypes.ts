@@ -1,4 +1,4 @@
-import type { $Id } from 'go.vote/App/@$id/itemTypes'
+import type { $Id } from 'go.vote/$Schema/@$id/itemTypes'
 
 export const set$Item = 'set$Item'
 export type $Item = {
