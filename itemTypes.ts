@@ -1,5 +1,7 @@
-import type { Cand } from '../@cand/actionTypes'
-import type { ConsultantId } from 'go.vote/Consultant/@consultantId/itemTypes'
+import type { Id } from 'go.vote/App/@id/itemTypes'
 
-export const setConsultantId = 'setConsultantId'
-export type SetConsultantId = Cand & ConsultantId
+export const set$Item = 'set$Item'
+export type $Item = {
+    $item: number
+}
+export type Set$Item = Id & $Item
