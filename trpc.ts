@@ -16,7 +16,7 @@ export const set$ItemSql = /* sql */ `
     WHERE $id = ?;
 `
 
-export async function resolveSet$item({
+export async function resolveSet$Item({
     ctx,
     input,
 }: {
