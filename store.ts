@@ -1,5 +1,5 @@
 import produce from 'immer'
-import type { $SchemaStore } from '../store'
+import { $SchemaStore, use$SchemaStore } from '../store'
 import { set$Item, Set$Item } from './itemTypes'
 
 export type Set$ItemStore = {
@@ -19,6 +19,8 @@ export function $itemSetter(set) {
 
 export const select$Item = ($id) => (state) =>
     state.$data[state.$idToIndex[$id]]?.$item
+
+export const use$ItemSelector = ($id) => use$SchemaStore(select$Item($id))
 
 export const Set$ItemSubscriber = {
     [set$Item]: {} as Set$Item,
