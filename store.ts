@@ -17,6 +17,6 @@ export function $itemSetter(set) {
     }
 }
 
-export const Set$ItemSubscriber = {
+export const Set$ItemOnChangeSubscriber = {
     [set$Item]: {} as Set$Item,
 }
