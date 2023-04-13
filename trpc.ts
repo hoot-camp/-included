@@ -5,7 +5,7 @@ import type { Context } from 'go.vote/@trpc/createContext'
 import { Set$Item } from './types'
 import { set$Item } from './config'
 import { ResultSetHeader } from 'mysql2'
-import { name as emitName } from 'go.vote/$Datum/settings'
+import { name as emitName } from 'go.vote/.pattern/settings'
 
 export const set$ItemRoute = {
     [set$Item]: procedure.input(set$ItemSchema).mutation(resolveSet$Item),

@@ -1,10 +1,10 @@
 import { createSelector } from 'reselect'
-import { Keys } from 'go.vote/$DatumPath/@keys'
-import { use$DatumStore } from 'go.vote/$DatumPath/store'
-import { select$Datum } from 'go.vote/$DatumPath/@$data/selectors'
+import { Keys } from 'go.vote/.pattern/@keys'
+import { use$DatumStore } from 'go.vote/.pattern/store'
+import { select$Datum } from 'go.vote/.pattern/@$data/selectors'
 import { $item } from './config'
 import { $Item } from './types'
-import { $DatumStore } from 'go.vote/$DatumPath/store'
+import { $DatumStore } from 'go.vote/.pattern/store'
 
 export type $ItemValue = $Item[typeof $item]
 
