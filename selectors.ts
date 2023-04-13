@@ -8,13 +8,13 @@ import { $DatumStore } from 'go.vote/$DatumPath/store'
 
 export type $ItemValue = $Item[typeof $item]
 
-export const select$Item = ({
-    $keyListComma,
-}: $Keys): ((state: $DatumStore) => $ItemValue) =>
+export const select$Item = (
+    $keyObject: $Keys,
+): ((state: $DatumStore) => $ItemValue) =>
     createSelector(
-        (state: $DatumStore) => select$Datum({ $keyListComma })(state),
+        (state: $DatumStore) => select$Datum($keyObject)(state),
         ($Datum) => $Datum[$item],
     )
 
-export const use$ItemSelector = ({ $keyListComma }: Keys): $ItemValue =>
-    use$DatumStore(select$Item({ $keyListComma }))
+export const use$ItemSelector = ($keyObject: Keys): $ItemValue =>
+    use$DatumStore(select$Item($keyObject))

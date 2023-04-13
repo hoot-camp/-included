@@ -13,7 +13,7 @@ export function $itemSetter(set) {
         [set$Item]: ({ $keyListComma, $item: $itemValue }: Set$Item): void =>
             set(
                 produce<$DatumStore>((state) => {
-                    select$Datum({ $keyListComma })(state)[$item] = $itemValue
+                    select$Datum($keyObject)(state)[$item] = $itemValue
                 }),
             ),
     }
