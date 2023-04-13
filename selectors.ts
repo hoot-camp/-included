@@ -9,7 +9,7 @@ import { $DatumStore } from 'go.vote/$DatumPath/store'
 export type $ItemValue = $Item[typeof $item]
 
 export const select$Item = (
-    $keyObject: $Keys,
+    $keyObject: $Key,
 ): ((state: $DatumStore) => $ItemValue) =>
     createSelector(
         (state: $DatumStore) => select$Datum($keyObject)(state),
