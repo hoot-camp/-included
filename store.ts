@@ -1,22 +1,24 @@
 import produce from 'immer'
-import { $SchemaStore } from '../store'
-import { set$Item, Set$Item } from './itemTypes'
+import { Set$Item } from './types'
+import { $item, set$Item } from './config'
+import { select$Datum } from 'go.vote/$DatumPath/@$data/selectors'
+import { $DatumStore } from 'go.vote/$DatumPath/store'
 
-export type Set$ItemStore = {
+export type At$Item = {
     [set$Item]: (incoming: Set$Item) => void
 }
 
 export function $itemSetter(set) {
     return {
-        [set$Item]: ({ $id, $item }) =>
+        [set$Item]: ({ $keyListComma, $item: $itemValue }: Set$Item): void =>
             set(
-                produce<$SchemaStore>((state) => {
-                    state.$data[state.$idToIndex[$id]].$item = $item
+                produce<$DatumStore>((state) => {
+                    select$Datum({ $keyListComma })(state)[$item] = $itemValue
                 }),
             ),
     }
 }
 
-export const Set$ItemOnChangeSubscriber = {
+export const Set$ItemOnChange = {
     [set$Item]: {} as Set$Item,
 }
