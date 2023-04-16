@@ -1,8 +1,8 @@
 import produce from 'immer'
 import { Set$Item } from './types'
 import { $item, set$Item } from './config'
-import { select$Datum } from 'go.vote/.pattern/@$data/selectors'
-import { $DatumStore } from 'go.vote/.pattern/store'
+import { select$Datum } from 'go.vote/.Pattern/@$data/selectors'
+import { $DatumStore } from 'go.vote/.Pattern/store'
 
 export type At$Item = {
     [set$Item]: (incoming: Set$Item) => void

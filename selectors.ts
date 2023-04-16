@@ -1,20 +1,20 @@
 import { createSelector } from 'reselect'
-import { Keys } from 'go.vote/.pattern/@keys'
-import { use$DatumStore } from 'go.vote/.pattern/store'
-import { select$Datum } from 'go.vote/.pattern/@$data/selectors'
+import { DataKey } from 'go.vote/.kit-schema/@dataKey'
+import { use$DatumStore } from 'go.vote/.kit-schema/store'
+import { select$Datum } from 'go.vote/.kit-schema/@$data/selectors'
 import { $item } from './config'
 import { $Item } from './types'
-import { $DatumStore } from 'go.vote/.pattern/store'
+import { $DatumStore } from 'go.vote/.kit-schema/store'
 
 export type $ItemValue = $Item[typeof $item]
 
 export const select$Item = (
-    $keyObject: $Key,
+    dataKey: DataKey,
 ): ((state: $DatumStore) => $ItemValue) =>
     createSelector(
-        (state: $DatumStore) => select$Datum($keyObject)(state),
+        (state: $DatumStore) => select$Datum(dataKey)(state),
         ($Datum) => $Datum[$item],
     )
 
-export const use$ItemSelector = ($keyObject: Keys): $ItemValue =>
-    use$DatumStore(select$Item($keyObject))
+export const use$ItemValue = (dataKey: DataKey): $ItemValue =>
+    use$DatumStore(select$Item(dataKey))
