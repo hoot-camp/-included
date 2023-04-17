@@ -1,3 +1,3 @@
 import trpc from 'go.vote/@trpc'
-import { set$Item } from './config'
-export const tSet$Item = trpc.$dotPath[set$Item]
+import { set$Included } from './config'
+export const tSet$Included = trpc.$dotPath[set$Included]

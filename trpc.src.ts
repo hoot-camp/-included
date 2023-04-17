@@ -1,6 +1,6 @@
 import { procedure } from 'go.vote/@trpc/trpc'
 import { emitter } from 'go.vote/@data/events/emitter'
-import { set$IncludedSchema } from './zod'
+import { set$IncludedSchema } from './types.zod'
 import type { Context } from 'go.vote/@trpc/createContext'
 import { Set$Included } from './types'
 import { set$Included } from './config'
@@ -14,9 +14,9 @@ export const set$IncludedRoute = {
 }
 
 export const set$IncludedSql = /* sql */ `
-    UPDATE $dotDataPath
+    UPDATE $tableName
         SET $included = ?
-    WHERE $whereKeys
+    WHERE $whereKeyClause
     ;
 `
 
@@ -27,7 +27,7 @@ export async function resolveSet$Included({
     ctx: Context
     input: Set$Included
 }) {
-    const { $keyListComma, $included } = input
+    const { $keyWithDefaultListComma, $included } = input
     const result = (await ctx.query(set$IncludedSql, [
         $included,
         $keyListComma,
